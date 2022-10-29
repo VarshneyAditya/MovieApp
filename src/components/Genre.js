@@ -3,6 +3,7 @@ import React from 'react'
 function Genre(props) {
   let [isLoading, setLoaded]= React.useState(true);
   let [genre, setGenre] = React.useState("");
+  let {cpage, setCPage}=props;
   React.useEffect(async function(){
     // let response = await fetch('https://react-backend101.herokuapp.com/genres')
     // let responseJson = await response.json();
@@ -16,9 +17,12 @@ function Genre(props) {
   function genreClickHandler(e){
     if(e.target.outerText=="All Genres"){
       props.clickGenre("");
+      setCPage(1);
+      
     }
     else{
       props.clickGenre(e.target.outerText);
+      setCPage(1);
     }
   }
 
